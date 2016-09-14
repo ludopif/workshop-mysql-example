@@ -167,11 +167,11 @@
           application: "${APPLICATION_NAME}"
       spec: 
         ports:
-          - name: 8080-tcp
+          - name: "app-port"
             port: 8080
             protocol: TCP
             targetPort: 8080
-          - name: 8443-tcp
+          - name: "app-port-secure"
             port: 8443
             protocol: TCP
             targetPort: 8443
@@ -187,7 +187,7 @@
           application: "${APPLICATION_NAME}"
       spec: 
         ports: 
-          - name: "mysql"
+          - name: "db-port"
             port: 3306
             targetPort: 3306
         selector: 
@@ -203,7 +203,7 @@
       spec: 
         host: ""
         port:
-          targetPort: "8080"
+          targetPort: 8080
         to: 
           kind: "Service"
           name: "${APPLICATION_NAME}"
